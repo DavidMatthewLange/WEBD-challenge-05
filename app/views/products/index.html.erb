@@ -1,12 +1,12 @@
 <h1>Products</h1>
 
-<ul>
+<div>
   <% @products.each do |product| %>
-  <li>
     <h2><%= link_to product.title, product_path(product) %></h2><br>
-    <b>Price:</b> <%= product.price %><br>
-    <b>Stock Qty:</b> <%= product.stock_quantity %>
-  </li>
+    <p><b>Price:</b> <%= product.price %></p><br>
+    <p><b>Description:</b> <%= product.description %></p><br>
+    <p><b>Stock Qty:</b> <%= product.stock_quantity %></p><br>
+    <p><b>Category:</b> <%= product.category.name %></p>
   <br>
   <% end %>
-</ul>
+</div>

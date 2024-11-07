@@ -22,8 +22,8 @@ products = CSV.parse(csv_data, headers: true)
 
 products.each do |product|
   title = product['title']
-  description = product['description']
   price = product['price']
+  description = product['description']
   stock_quantity = product['stock_quantity']
   category_name = product['category']
 
@@ -31,8 +31,8 @@ products.each do |product|
 
   Product.create(
     title: title,
-    description: description,
     price: price,
+    description: description,
     stock_quantity: stock_quantity,
     category: category
   )
