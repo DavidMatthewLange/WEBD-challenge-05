@@ -1,2 +1,11 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>Products</h1>
+
+<ul>
+  <% @products.each do |product| %>
+  <li>
+    <b>Title:</b> <%= product.title %><br>
+    <b>Price:</b> <%= product.price %><br>
+    <b>Stock Qty:</b> <%= product.stock_quantity %>
+  </li>
+  <br>
+</ul>
