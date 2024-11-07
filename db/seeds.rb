@@ -10,12 +10,30 @@
 require "csv"
 
 Product.destroy_all
-# Category.destroy_all
+Category.destroy_all
 
-676.times do
+csv_file = Rails.root.join('db/products.csv')
+csv_data = File.read(csv_file)
+
+products = CSV.parse(csv_data, headers: true)
+
+# If CSV created in Excel
+# products = CSV.parse(csv_data, headers: true, encoding: 'iso-8859-1')
+
+products.each do |product|
+  title = product['title']
+  description = product['description']
+  price = product['price']
+  stock_quantity = product['stock_quantity']
+  category_name = product['category']
+
+  category = Category.find_or_create_by(name: category_name)
+
   Product.create(
-    title: Faker::Commerce.product_name,
-    price: Faker::Commerce.price(range: 1..666.66, as_string: false),
-    stock_quantity: Faker::Number.between(from: 1, to: 50)
+    title: title,
+    description: description,
+    price: price,
+    stock_quantity: stock_quantity,
+    category: category
   )
 end
