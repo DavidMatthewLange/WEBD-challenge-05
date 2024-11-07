@@ -21,19 +21,23 @@ products = CSV.parse(csv_data, headers: true)
 # products = CSV.parse(csv_data, headers: true, encoding: 'iso-8859-1')
 
 products.each do |product|
-  title = product['title']
+  name = product['name']
   price = product['price']
   description = product['description']
-  stock_quantity = product['stock_quantity']
+  stock_quantity = product['stock quantity']
   category_name = product['category']
+
+puts "Creating product: #{name}, Category #{category_name}"
 
   category = Category.find_or_create_by(name: category_name)
 
   Product.create(
-    title: title,
+    title: name,
     price: price,
     description: description,
     stock_quantity: stock_quantity,
     category: category
   )
+
+  puts "Products: #{Product.count}"
 end
