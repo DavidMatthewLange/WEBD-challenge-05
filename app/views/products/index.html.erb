@@ -3,9 +3,10 @@
 <ul>
   <% @products.each do |product| %>
   <li>
-    <h2><%= link_to product.title, products_path(product) %></h2><br>
+    <h2><%= link_to product.title, product_path(product) %></h2><br>
     <b>Price:</b> <%= product.price %><br>
     <b>Stock Qty:</b> <%= product.stock_quantity %>
   </li>
   <br>
+  <% end %>
 </ul>
